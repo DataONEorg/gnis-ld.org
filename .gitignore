@@ -1,0 +1,12 @@
+node_modules
+coverage
+dist
+scrap
+plugins/*
+fetch
+data
+lib/webapp/_resources
+
+.git-*
+!plugins/package.json
+
