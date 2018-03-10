@@ -5,7 +5,7 @@ scrap
 plugins/*
 fetch
 data
-lib/webapp/_resources
+#lib/webapp/_resources
 
 .git-*
 !plugins/package.json
