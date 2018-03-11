@@ -12,7 +12,7 @@
     "semantic-web"
   ],
   "scripts": {
-    "test": "gulp"
+    "server": "node lib/server/server"
   },
   "devDependencies": {
     "browserify": "^14.4.0",
