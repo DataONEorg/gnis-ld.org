@@ -9,7 +9,42 @@ html(lang='en')
 
 		#intro
 			h1 The official Linked Data version of the USGS GNIS.
-			p The Geographic Names Information System (GNIS) is the Federal and national standard for geographic nomenclature. The U.S. Geological Survey developed the GNIS in support of the U.S. Board on Geographic Names as the official repository of domestic geographic names data, the official vehicle for geographic names use by all departments of the Federal Government, and the source for applying geographic names to Federal electronic and printed products.
+			p A description of the source dataset from <a href="https://geonames.usgs.gov/domestic/index.html">the Board on Geographic Names</a>:
+			p.quote The Geographic Names Information System (GNIS) is the Federal and national standard for geographic nomenclature. The U.S. Geological Survey developed the GNIS in support of the U.S. Board on Geographic Names as the official repository of domestic geographic names data, the official vehicle for geographic names use by all departments of the Federal Government, and the source for applying geographic names to Federal electronic and printed products. <br><br> The GNIS contains information about physical and cultural geographic features of all types in the United States, associated areas, and Antarctica, current and historical, but not including roads and highways. The database holds the Federally recognized name of each feature and defines the feature location by state, county, USGS topographic map, and geographic coordinates. Other attributes include names or spellings other than the official name, feature designations, feature classification, historical and descriptive information, and for some categories the geometric boundaries.
+
+		#demos
+			h1 Examples
+			.demo
+				.title
+					a(href="/lod/gnis/feature/1654975") Lake Tahoe
+				.info Under the 'Incoming Triples' section, we can see that this is the <code>nhd:gnisFeature</code> of <a href="/lod/nhd/feature/44560536">an NHD feature</a>, which has a <a href="/lod/geometry/multipolygon/nhdf.44560536">multipolygon geometry node</a>. 
+
+		#sources
+			h1 Source code
+			.list
+				.item
+					.title 
+						a(href="https://github.com/blake-regalia/usgs-ld") USGS-LD
+					.info Bundles the entire pipeline into a Docker Compose file and a helper bash script. Its components are listed out below.
+				.item
+					.title 
+						a(href="https://github.com/blake-regalia/usgs-triplifier") USGS Triplifier
+					.info Converts GNIS and other USGS datasets (such as NHD) into RDF.
+				.item
+					.title
+						a(href="https://github.com/blake-regalia/kiwi-bulk-loader") KiWi Bulk Loader
+					.info Loads triples directly into KiWi's PostgreSQL tables in parallel.
+				.item
+					.title
+						a(href="https://github.com/blake-regalia/marmotta/tree/usgs-ld") Apache Marmotta
+					.info The 584 branch of Apache Marmotta supports GeoSPARQL.
+				.item
+					.title
+						a(href="https://github.com/blake-regalia/gnis-ld.org") GNIS-LD.org
+					.info This website which includes dereferencing logic, redirection, and SPARQL query proxying.
+
+
+
 
 		#contact
 			| blake at geog.ucsb.edu

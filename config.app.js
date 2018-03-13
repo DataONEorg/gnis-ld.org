@@ -7,6 +7,8 @@ const P_DATA_URI = `http://${S_DATA_HOST}${S_DATA_PATH}`;
 const P_GEOM_URI = `${P_DATA_URI}/geometry`;
 
 module.exports = {
+	data_host: S_DATA_HOST,
+	data_path: S_DATA_PATH,
 	data_uri: P_DATA_URI,
 	geom_uri: P_GEOM_URI,
 	sparql_endpoint: P_ENDPOINT,
