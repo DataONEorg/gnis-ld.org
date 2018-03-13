@@ -19,5 +19,4 @@ RUN npm i \
     && gulp
 
 # entrypoint
-ENTRYPOINT ["npm", "run"]
-CMD ["server"]
+CMD ["npm", "start"]
