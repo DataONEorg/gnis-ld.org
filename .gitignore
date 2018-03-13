@@ -5,6 +5,7 @@ scrap
 plugins/*
 fetch
 data
+package-lock.json
 #lib/webapp/_resources
 
 .git-*
