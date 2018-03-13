@@ -1,18 +1,21 @@
 {
   "name": "gnis-ld.org",
-  "version": "0.0.1",
-  "private": true,
-  "description": "Linked Data interface for SPARQL endpoints",
+  "version": "1.0.0",
+  "description": "Serves the USGS datasets",
   "author": {
     "name": "Blake Regalia",
     "email": "blake.regalia@gmail.com"
   },
   "keywords": [
+    "usgs",
+    "usgs-ld",
+    "gnis",
+    "gnis-ld"
     "linked-data",
     "semantic-web"
   ],
   "scripts": {
-    "server": "node lib/server/server"
+    "server": "node lib/server/server.js"
   },
   "devDependencies": {
     "browserify": "^14.4.0",

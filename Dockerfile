@@ -2,6 +2,9 @@
 FROM node:9
 MAINTAINER Blake Regalia <blake.regalia@gmail.com>
 
+# web server
+EXPOSE 80
+
 # source code
 WORKDIR /src/app
 COPY . .
@@ -17,4 +20,4 @@ RUN npm i \
 
 # entrypoint
 ENTRYPOINT ["npm", "run"]
-CMD ["all"]
+CMD ["server"]
