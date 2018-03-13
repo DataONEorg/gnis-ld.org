@@ -10,12 +10,12 @@
     "usgs",
     "usgs-ld",
     "gnis",
-    "gnis-ld"
+    "gnis-ld",
     "linked-data",
     "semantic-web"
   ],
   "scripts": {
-    "server": "node lib/server/server.js"
+    "start": "node lib/server/server.js"
   },
   "devDependencies": {
     "browserify": "^14.4.0",
@@ -44,6 +44,7 @@
     "express": "^4.15.3",
     "express-negotiate": "0.0.5",
     "font-awesome": "^4.7.0",
+    "http-proxy-middleware": "^0.18.0",
     "jquery-browserify": "^1.8.1",
     "jsonld": "^1.0.1",
     "less-middleware": "^2.2.0",
