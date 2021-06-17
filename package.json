@@ -30,7 +30,7 @@
     "gulp-sourcemaps": "^2.6.0",
     "gulp-tap": "^1.0.1",
     "gulp-util": "^3.0.8",
-    "pug": "^2.0.0-rc.2",
+    "pug": "^3.0.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
