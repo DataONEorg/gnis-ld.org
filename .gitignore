@@ -6,7 +6,7 @@ plugins/*
 fetch
 data
 #lib/webapp/_resources
-
+.DS_Store
 .git-*
 !plugins/package.json
 

@@ -1,0 +1,51 @@
+doctype html
+html(lang='en')
+  head
+    title SPARQL Queries
+    link(rel='stylesheet', type='text/css', href='/style/common.css')
+</head>
+
+  body
+    .banner
+      .text GNIS Linked Data
+
+    .original_project
+      h1 Original Project 
+      p The original paper published on the GNIS-LD service can be found on <a href="https://link.springer.com/chapter/10.1007/978-3-319-93417-4_34">Springer</a>.
+      p The original project's team involved
+      .list 
+        .item 
+          .title Blake Regalia
+        .item 
+          .title Janowicz Krzysztof
+        .item 
+          .title Gengchen Mai
+        .item
+          .title Dalia Varanka
+        .item 
+          .title E. Lynn Usery
+
+    .sources
+      h1 Source code
+      p The source code for the GNIS-LD project, developed at the UCSB STKO Lab can be found below.
+      .list
+        .item
+          .title 
+            a(href="https://github.com/blake-regalia/usgs-ld") USGS-LD
+          .info Bundles the entire pipeline into a Docker Compose file and a helper bash script. Its components are listed out below.
+        .item
+          .title 
+            a(href="https://github.com/blake-regalia/usgs-triplifier") USGS Triplifier
+          .info Converts GNIS and other USGS datasets (such as NHD) into RDF.
+        .item
+          .title
+            a(href="https://github.com/blake-regalia/kiwi-bulk-loader") KiWi Bulk Loader
+          .info Loads triples directly into KiWi's PostgreSQL tables in parallel.
+        .item
+          .title
+            a(href="https://github.com/blake-regalia/marmotta/tree/usgs-ld") Apache Marmotta
+          .info The 584 branch of Apache Marmotta supports GeoSPARQL.
+        .item
+          .title
+            a(href="https://github.com/blake-regalia/gnis-ld.org") GNIS-LD.org
+          .info This website which includes dereferencing logic, redirection, and SPARQL query proxying.

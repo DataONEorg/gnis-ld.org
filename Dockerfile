@@ -1,6 +1,6 @@
 # Dockerfile for GNIS-LD frontend
 FROM node:9
-MAINTAINER Blake Regalia <blake.regalia@gmail.com>
+MAINTAINER Thomas Thelen <thelen@nceas.ucsb.edu>
 
 # web server
 EXPOSE 80

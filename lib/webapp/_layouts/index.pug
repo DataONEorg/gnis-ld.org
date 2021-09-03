@@ -1,50 +1,56 @@
 doctype html
 html(lang='en')
-	head
-		title GNIS-LD
-		link(rel='stylesheet', type='text/css', href='/style/index.css')
-		script(src='/script/index.js')
-	body
-		#banner GNIS Linked Data
+  head
+    title GNIS-LD
+    link(rel='stylesheet', type='text/css', href='/style/index.css')
+    link(rel='stylesheet', type='text/css', href='/style/common.css')
+    script(src='/script/index.js')
+  body
+    .banner
+      .text GNIS Linked Data
 
-		#intro
-			h1 The official Linked Data version of the USGS GNIS.
-			p A description of the source dataset from <a href="https://geonames.usgs.gov/domestic/index.html">the Board on Geographic Names</a>:
-			p.quote The Geographic Names Information System (GNIS) is the Federal and national standard for geographic nomenclature. The U.S. Geological Survey developed the GNIS in support of the U.S. Board on Geographic Names as the official repository of domestic geographic names data, the official vehicle for geographic names use by all departments of the Federal Government, and the source for applying geographic names to Federal electronic and printed products. <br><br> The GNIS contains information about physical and cultural geographic features of all types in the United States, associated areas, and Antarctica, current and historical, but not including roads and highways. The database holds the Federally recognized name of each feature and defines the feature location by state, county, USGS topographic map, and geographic coordinates. Other attributes include names or spellings other than the official name, feature designations, feature classification, historical and descriptive information, and for some categories the geometric boundaries.
+    .intro
+      h1 The official Linked Data version of the USGS GNIS dataset.
+      p From <a href="https://geonames.usgs.gov/domestic/index.html" target="_blank">the Board on Geographic Names</a>:
+      p.quote The Geographic Names Information System (GNIS) is the Federal and national standard for geographic nomenclature. The U.S. Geological Survey developed the GNIS in support of the U.S. Board on Geographic Names as the official repository of domestic geographic names data, the official vehicle for geographic names use by all departments of the Federal Government, and the source for applying geographic names to Federal electronic and printed products. <br><br> The GNIS contains information about physical and cultural geographic features of all types in the United States, associated areas, and Antarctica, current and historical, but not including roads and highways. The database holds the Federally recognized name of each feature and defines the feature location by state, county, USGS topographic map, and geographic coordinates. Other attributes include names or spellings other than the official name, feature designations, feature classification, historical and descriptive information, and for some categories the geometric boundaries.
+      p The GNIS-LD service exposes the GNIS information in a linked data form, conforming to the W3C <a href="https://www.w3.org/TR/rdf11-concepts/" target="_blank">RDF</a> standard.
 
-		#demos
-			h1 Examples
-			.demo
-				.title
-					a(href="/lod/gnis/feature/1654975") Lake Tahoe
-				.info Under the 'Incoming Triples' section, we can see that this is the <code>nhd:gnisFeature</code> of <a href="/lod/nhd/feature/44560536">an NHD feature</a>, which has a <a href="/lod/geometry/multipolygon/nhdf.44560536">multipolygon geometry node</a>. 
+    .background 
+      h1 Background 
+      p This project was created by the <a href="https://www.geog.ucsb.edu/services/research-facilities" target="_blank">UCSB STKO Lab</a> and is currently maintained by <a href="https://www.dataone.org/" target="_blank">DataONE</a> through funding from NSF grant <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2033521" target="_blank">2033521</a> under the KnowWhereGraph project. For more information on the origins, original source code, and publication, visit the <a href="/origins">origins</a> page.
+      p Under the KnowWhereGraph project, the infastructure changed to use GraphDB as the backing triple store and is deployed across a Kubernetes cluster. Every quarter, the graph database is updated to reflect any changes to the USGS GNIS dataset.
+      p The knowledge in the graph store is described using two ontologies: <a href="/resource/ontologies/gnis.ttl" target="_blank">gnis</a> and <a href="/resource/ontologies/usgs.ttl" target="_blank">usgs</a>. Both of these ontologies were developed under the STKO Lab work.
 
-		#sources
-			h1 Source code
-			.list
-				.item
-					.title 
-						a(href="https://github.com/blake-regalia/usgs-ld") USGS-LD
-					.info Bundles the entire pipeline into a Docker Compose file and a helper bash script. Its components are listed out below.
-				.item
-					.title 
-						a(href="https://github.com/blake-regalia/usgs-triplifier") USGS Triplifier
-					.info Converts GNIS and other USGS datasets (such as NHD) into RDF.
-				.item
-					.title
-						a(href="https://github.com/blake-regalia/kiwi-bulk-loader") KiWi Bulk Loader
-					.info Loads triples directly into KiWi's PostgreSQL tables in parallel.
-				.item
-					.title
-						a(href="https://github.com/blake-regalia/marmotta/tree/usgs-ld") Apache Marmotta
-					.info The 584 branch of Apache Marmotta supports GeoSPARQL.
-				.item
-					.title
-						a(href="https://github.com/blake-regalia/gnis-ld.org") GNIS-LD.org
-					.info This website which includes dereferencing logic, redirection, and SPARQL query proxying.
+    .queries
+      h1 SPARQL Endpoint
+      p A public SPARQL endpoint is exposed at <a href="/sparql" target="_blank">https://stage.gnis-ld.org:30443/sparql</a>. When submitting queries, the content should be Form URLEncoded with 'query' specified. For example, a cURL command should look like
+      p.quote curl -d 'query=SELECT * WHERE {?s ?p ?o}' https://stage.gnis-ld.org:30443/sparql
+      p A user friendly query page with examples and query interface can be found on the <a href="/queries">queries</a> page.
+      p A dump of the graph database is available at the <a href="/data" target="_blank">https://stage.gnis-ld.org:30443/data</a> endpoint.
+    
+    .publications
+      h1 Publications 
+      p Regalia, B., Janowicz, K. , and McKenzie, G. (2019): <a href="https://blake-regalia.net/resource/2019-TGIS_Topology.pdf">Computing and Querying Strict, Approximate, and Metrically-Refined Topological Relations in Linked Geographic Data.</a> Transactions in GIS.
+      p Regalia, B., Janowicz, K. , and Mai, G. (2018): <a href="http://geog.ucsb.edu/~regalia/paper/eswc2018.pdf" target="_blank">GNIS-LD: Serving and Visualizing the Geographic Names Information System Gazetteer As Linked Data.</a> 15th ESWC Conference. 3-7 June, Heraklion, Crete.
+
+    .sources
+      h1 Source code
+      p The source code for the GNIS-LD project can be found below.
+      .list
+        .item
+          .title 
+            a(href="https://github.com/DataONEorg/gnis-deployment/" target="_blank") gnis-deployment
+          .info The Kubernetes deployment responsible for container orchestration and networking.
+        .item
+          .title 
+            a(href="https://github.com/DataONEorg/usgs-triplifier" target="_blank") USGS Triplifier
+          .info Converts GNIS into RDF.
+        .item
+          .title
+            a(href="https://github.com/dataONEorg/gnis-ld.org" target="_blank") GNIS-LD.org
+          .info This website which includes dereferencing logic, redirection, and SPARQL query proxying.
 
 
-
-
-		#contact
-			| blake at geog.ucsb.edu
+    .contact
+      h1 Contact 
+      p For any questions about the service, contact DataONE Support (support@dataone.org).

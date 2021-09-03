@@ -1,7 +1,7 @@
-
 const S_DATA_HOST = process.env.USGS_DATA_HOST || 'data.usgs.gov';
 const S_DATA_PATH = process.env.USGS_DATA_PATH || '/lod';
-const P_ENDPOINT = process.env.USGS_ENDPOINT_URL || `http://${S_DATA_HOST}/sparql/select`;
+// The graph store's SPARQL endpoint
+const P_ENDPOINT = process.env.USGS_ENDPOINT_URL || `http://localhost:7200/repositories/gnis-ld`;
 
 const P_DATA_URI = `http://${S_DATA_HOST}${S_DATA_PATH}`;
 const P_GEOM_URI = `${P_DATA_URI}/geometry`;
