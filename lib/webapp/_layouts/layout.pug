@@ -1,0 +1,19 @@
+include ../_mixins/_header
+include ../_mixins/_navigation
+include ../_mixins/_footer
+
+doctype html
+html(lang='en')
+  head
+    title GNIS-LD
+    block content-header
+    link(rel='stylesheet', type='text/css', href='/style/common.css')
+  body
+    +header()
+    .content-layout
+      .left-col 
+      .content
+        +navigation()
+        block content-block
+          .page-content
+    //+footer()
