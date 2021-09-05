@@ -1,6 +1,6 @@
 # Dockerfile for GNIS-LD frontend
-FROM node:9
-MAINTAINER Thomas Thelen <thelen@nceas.ucsb.edu>
+FROM node:alpine
+MAINTAINER DataONE <support@dataone.org>
 
 # web server
 EXPOSE 80

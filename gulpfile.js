@@ -1,62 +1,54 @@
-//
-const path = require('path');
+const gulp = require('gulp'),
+    path = require('path'),
+    pug = require('gulp-pug'),
+    less = require('gulp-less')
+    plumber = require('gulp-plumber'),
+    browserify = require('browserify'),
+    source = require('vinyl-source-stream'),
+    buffer = require('vinyl-buffer'),
+    tap = require('gulp-tap');
 
-// gulp & tasker
-const gulp = require('gulp');
-const soda = require('gulp-soda');
+browserSync = require('browser-sync');
 
-// 
-soda(gulp, {
-	// // pass user config
-	// config: h_user_config,
+/**
+ * pug compiler
+ */
+ gulp.task('pug', async function() {
+  return gulp.src('lib/**/*.pug')
+   .pipe(pug())
+   .pipe(gulp.dest('dist'));
+})
 
-	// 
-	inputs: {
-		main: 'node',
-		webapp: 'bundle',
-	},
-
-	// 
-	targets: {
-		node: [
-			'copy',
-		],
-
-		// webapp development
-		bundle: [
-			'[all]: less pug browserify copy',
-			'less',
-			'pug',
-			'browserify',
-			'copy',
-			'browser-sync: all',
-			'develop: all',
-		],
-	},
-
-	// task options
-	options: {
-		less: {
-			watch: '**/*.less',
-			rename: h => h.dirname = './_styles',
-		},
-		pug: {
-			watch: '**/*.pug',
-			// rename: h => h.dirname = h.dirname.replace(/^src/, '.'),
-		},
-		browserify: {
-			watch: '**/*.js',
-			src: '_scripts',
-			rename: h => h.dirname = path.join('_scripts', h.dirname),
-		},
-		'copy-webapp': {
-			src: 'source',
-			rename: h => h.dirname = 'source',
-		},
-	},
-
-	// //
-	// aliases: {
-	// 	serve: ['reload-proxy', 'develop-webapp', 'browser-sync'],
-	// },
+/**
+ * less compiler
+ */
+gulp.task('less', function(){
+    return gulp.src('lib/**/*.less')
+        .pipe(less())
+        .pipe(gulp.dest('dist'))
+        .pipe(browserSync.reload({stream: true}))
 });
+
+/* 
+* browserify task
+*/
+gulp.task('browserify', function() {
+  return gulp.src('lib/js/*.js', {read:false})
+
+	// transform file objects with gulp-tap
+	.pipe(tap((h_file) => {
+	  // browserify
+		h_file.contents = browserify({
+			entries: [h_file.path],
+			debug: true,
+		}).bundle();
+	}))
+	// transform streaming contents into buffer contents
+	.pipe(buffer())
+
+	// output
+	.pipe(gulp.dest('dist/js'));
+});
+
+// Called when 'gulp' is run
+gulp.task('default',gulp.series('pug', 'less', 'browserify'));
