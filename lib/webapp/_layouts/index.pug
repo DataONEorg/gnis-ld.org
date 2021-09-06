@@ -22,13 +22,13 @@ block content-block
             p The GNIS-LD dataset is available to the public free of charge. The data can be obtained by querying the SPARQL endpoint or by downloading a database archive. The data is hosted in a GraphDB repository using the RDFS-Plus inference ruleset.
 
             h2 SPARQL Endpoint
-            p A public SPARQL endpoint is exposed at <a href="/sparql" target="_blank">https://stage.gnis-ld.org:30443/sparql</a>. Queries have a time limit of one hour but are not limited by the number of results returned.
+            p A public SPARQL endpoint is available at the <a href="/sparql" target="_blank">sparql</a> page. Queries have a time limit of one hour but are not limited by the number of results returned.
             p An example query using cURL,
             p.quote curl -d 'query=SELECT * WHERE {?s ?p ?o}' https://stage.gnis-ld.org:30443/sparql
             p A user friendly way to test queries is located on the <a href="/queries">queries</a> page. It provides a number of example queries and an easy to use SPARQL tool.
             
             h2 Database Archive
-            p If a complete archive of the database is needed, it can be downloaded at <a href="/data" target="_blank">https://stage.gnis-ld.org:30443/data</a>.
+            p If a complete archive of the database is needed, it can be downloaded at the <a href="/data" target="_blank">data</a> endpoint page. The database is composed of approximately 35 million triples; the exported file on the gigabyte order of magnitude. 
             
             h2 Structure
             p The data is described with a number of common ontologies-most of which are W3C standards. Two ontologies were developed for this project, gnis and usgs. Both ontologies are used to describe the data. The usgs ontology contains terms about features. For example, it contains definitions for streams, plains, ridges, etc.
