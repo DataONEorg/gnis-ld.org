@@ -10,8 +10,8 @@ WORKDIR /src/app
 COPY . .
 
 # install packages
-RUN apt-get -y update \
-    && apt-get upgrade -y
+RUN apk update && \
+    apk upgrade
 
 # install software
 RUN npm i -g gulp

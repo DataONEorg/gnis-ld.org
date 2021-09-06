@@ -1,8 +1,6 @@
 const gulp = require('gulp'),
-    path = require('path'),
     pug = require('gulp-pug'),
     less = require('gulp-less')
-    plumber = require('gulp-plumber'),
     browserify = require('browserify'),
     source = require('vinyl-source-stream'),
     buffer = require('vinyl-buffer'),
