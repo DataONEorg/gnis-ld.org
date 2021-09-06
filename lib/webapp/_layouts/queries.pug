@@ -5,19 +5,23 @@ block content-header
   <link href="https://unpkg.com/@triply/yasgui/build/yasgui.min.css" rel="stylesheet" type="text/css" />
   <script src="https://unpkg.com/@triply/yasgui/build/yasgui.min.js"></script>
 block content-block
-  .intro
-    h1 Query Examples
-    p This page has a number of queries that demonstrate particular aspects of the GNIS-LD dataset.
-    h2 What named things are in Juneau?
-    p This query shows how to query for features that are in a particular area of interest, in this case Juneau.
-    <button onclick="addJuneau()">Try it out!</button>
+  body
+    .content-layout
+      .left-col 
+      .content
+        .intro
+          h1 Query Examples
+          p This page has a number of queries that demonstrate particular aspects of the GNIS-LD dataset.
+          h2 What named things are in Juneau?
+          p This query shows how to query for features that are in a particular area of interest, in this case Juneau.
+          <button onclick="addJuneau()">Try it out!</button>
 
-    h2 What are the features above 10,000 ft?
-    p This query retrieves all of the features whose elevation is greater than 10,000 feet.
-    <button onclick="addElevation()">Try it out!</button>
+          h2 What are the features above 10,000 ft?
+          p This query retrieves all of the features whose elevation is greater than 10,000 feet.
+          <button onclick="addElevation()">Try it out!</button>
 
-  <br><br><br>
-  p Query the gnis-ld graph store by writing your query in the box below and clicking the 'Play' button at the upper right side of it.
-  <div id="yasgui"></div>
-  <style>.yasgui .autocompleteWrapper { }</style>
+          <br><br><br>
+          p Query the gnis-ld graph store by writing your query in the box below and clicking the 'Play' button at the upper right side of it.
+          <div id="yasgui"></div>
+          <style>.yasgui .autocompleteWrapper { }</style>
   <script> const yasgui = new Yasgui(document.getElementById("yasgui"), { requestConfig: { endpoint: "https://stage.gnis-ld.org:30443/sparql" }, copyEndpointOnNewTab: true})</script>
