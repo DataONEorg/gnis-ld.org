@@ -86,3 +86,7 @@ Finally, add the page to the navigation bar.
 `gulpfile.js` contains the gulp tasks for building and running the application. Each gulp task accomplishes a small part in the build process. For example, there's a task for turning the less styling sheets into css and another for compiling the pug files. There are also higher level tasks that combine these steps, for example the `default` task (which performs a build).
 
 One potentially confusing part of the build/content serving system is that _not all files are served from dist/_. The paths to the files (css, ontology files, robots.txt, etc) are defined in `server.js`. Some of the files are being directly served from the `lib` directory.
+
+## Acknowledgments
+Work on this package was supported by:
+  - NSF OIA grant [2033521](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2033521) to Krzysztof Janowicz
