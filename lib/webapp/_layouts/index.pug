@@ -28,30 +28,22 @@ block content-block
             p A user friendly way to test queries is located on the <a href="/queries">queries</a> page. It provides a number of example queries and an easy to use SPARQL tool.
             
             h2 Database Archive
-            p If a complete archive of the database is needed, it can be downloaded at the <a href="/data" target="_blank">data</a> endpoint page. The database is composed of approximately 35 million triples; the exported file on the gigabyte order of magnitude. 
+            p If a complete archive of the database is needed, it can be downloaded at the <a href="/data" target="_blank">data</a> endpoint page. The database is composed of approximately 35 million triples; the exported file is approximately 2.5 GB. 
             
             h2 Structure
-            p The data is described with a number of common ontologies-most of which are W3C standards. Two ontologies were developed for this project, gnis and usgs. Both ontologies are used to describe the data. The usgs ontology contains terms about features. For example, it contains definitions for streams, plains, ridges, etc.
-            p Visual representations of the ontologies and associated OWL files can be downloaded from the cards below.
+            p The data is described with a number of common ontologies-most of which are W3C standards. Two ontologies were developed for this project, <a href="/images/gnis.svg" target='_blank'>gnis</a> and <a href="/images/usgs.svg" target='_blank'>usgs</a>. Both ontologies are used to describe the data. The usgs ontology contains terms about features. For example, it contains definitions for streams, plains, ridges, etc. The gnis ontology creates terms for talking about counties and extends properties of generic features.
+            p The OWL files defining the two ontologies can be downloaded from the cards below.
+            
             .card-container
               .cards 
                 .card
-                  a(href='/images/usgs.svg' target='_blank')
+                  a(href='/resource/ontologies/usgs.ttl' target='_blank')
                     .usgs
                       .title-banner 
-                        .title USGS
-                .card
-                  a(href='/images/gnis.svg' target='_blank')
-                    .gnis
-                      .title-banner 
-                        .title GNIS
+                        .title Download USGS
                 .card
                   a(href='/resource/ontologies/gnis.ttl' target='_blank')
-                    .gnis-ttl
+                    .gnis
                       .title-banner 
-                        .title GNIS (ttl)
-                .card
-                  a(href='/resource/ontologies/usgs.ttl' target='_blank')
-                    .usgs-ttl
-                      .title-banner 
-                        .title USGS (ttl)
+                        .title Download GNIS
+
