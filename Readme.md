@@ -6,15 +6,19 @@ Frontend for https://gnis-ld.org
 
 To build the source, run `gulp` from the project root.
 
-When building a stage docker image, run
+When building a development docker image, run
 
-`docker build -t thomasthelen/gnis-ld:stage .`
+`docker build -t thomasthelen/gnis-ld:dev .`
 
 When building a production docker image, run
 
-`docker build -t thomasthelen/gnis-ld:latest .`
+`docker build -t thomasthelen/gnis-ld .`
 
-Finally, push the image to `thomasthelen/gnis-ld:<stage/latest>`
+Finally, push the image to `thomasthelen/gnis-ld:<dev/latest>`
+
+### Differentiating Between Production & Development
+
+The main difference between production and development builds is the base URL. For example, development builds that are deployed on the develop cluster have address `stage.gnis-ld.org` while production builds have `gnis-ld.org`. This value is controlled by the `DEPLOYMENT_ADDRESS` variable in `config.app.js`.
 
 ## Running
 
