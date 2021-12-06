@@ -1,0 +1,139 @@
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color:blue;
+}
+
+body {
+  // The body is a 3 column, three row grid. The top row across all columns is the banner.
+  // The second row is the page content. The left and right collumns are the page gutters while
+  // the middle holds the actual page content.
+  // The last row across all columns is the footer.
+  font-family: arial;
+
+  .head {
+    position: relative;
+    display: flex;
+    // The head is the top row in the body grid
+    grid-area: 1 / 1 / 2 / 2; 
+    background-image: url("/images/banner.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 10rem;
+    align-items: center;
+    justify-content: center;
+    .text {
+      font-size: 3rem;
+    }
+    .photographer {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      color: white;
+      .peLink {
+        text-decoration: none;  
+        color: white;
+      }
+      
+    }
+  }
+  .content-layout {
+    height: 100%;
+
+    // The page layout is the third row in the body grid
+    grid-area: 3 / 1 / 4 / 2;
+    // The content is *also* a 1x3 grid. The first column is the left border, the middle is the page content
+    // and the rightmost is the navigation menu
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    
+    .left-col {
+      grid-area: 1 / 1 / 2 / 2; 
+    }
+
+    .content {
+      grid-area: 1 / 2 / 2 / 3;
+
+      .navigation {
+        display: grid;
+        width: 15fr;
+        height: 5fr;
+        grid-area: 2 / 1 / 3 / 2;
+        grid-template-columns: repeat(3, 2fr);
+        grid-template-rows: 3fr;
+        .nav-item {
+          background: inherit;
+          height: 2rem;
+          margin-top: 2rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .home {
+            grid-area: 1 / 1 / 2 / 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .queries {
+            grid-area: 1 / 2 / 2 / 3; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .about {
+            grid-area: 1 / 3 / 2 / 4; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+        .nav-link {
+          text-decoration: none;
+          text-transform: none;
+          color: rgb(21,76,121);
+        }
+      }
+    }
+
+    .nav-area {
+      grid-area: 1 / 3 / 2 / 4;
+    }
+  }
+
+  .footer {
+    display: flex;
+    grid-area: 3 / 1 / 4 / 4;
+    height: 5rem;
+    margin-top: 5rem;
+    background-color: lightslategrey;
+    align-items:center;
+
+    .copyright {
+      font-size: 1rem;
+      color: #154c79;
+      flex: 1;
+      margin-left: 1rem;
+    }
+
+    .name {
+      font-size: 1rem;
+      color: #154c79;
+      flex: 1;
+    }
+  }
+}
+
+
+
+h1,h2,h3 {
+	font-family: Ubuntu, Helvetica, sans-serif;
+  color: rgb(21,76,121);
+}
+
+.vowlGraph {
+  background-color: grey;
+}

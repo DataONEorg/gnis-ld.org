@@ -1,50 +1,49 @@
-doctype html
-html(lang='en')
-	head
-		title GNIS-LD
-		link(rel='stylesheet', type='text/css', href='/style/index.css')
-		script(src='/script/index.js')
-	body
-		#banner GNIS Linked Data
+extends layout.pug
 
-		#intro
-			h1 The official Linked Data version of the USGS GNIS.
-			p A description of the source dataset from <a href="https://geonames.usgs.gov/domestic/index.html">the Board on Geographic Names</a>:
-			p.quote The Geographic Names Information System (GNIS) is the Federal and national standard for geographic nomenclature. The U.S. Geological Survey developed the GNIS in support of the U.S. Board on Geographic Names as the official repository of domestic geographic names data, the official vehicle for geographic names use by all departments of the Federal Government, and the source for applying geographic names to Federal electronic and printed products. <br><br> The GNIS contains information about physical and cultural geographic features of all types in the United States, associated areas, and Antarctica, current and historical, but not including roads and highways. The database holds the Federally recognized name of each feature and defines the feature location by state, county, USGS topographic map, and geographic coordinates. Other attributes include names or spellings other than the official name, feature designations, feature classification, historical and descriptive information, and for some categories the geometric boundaries.
+block content-header
+  link(rel='stylesheet', type='text/css', href='/style/index.css')
+  script(src='/script/index.js')
 
-		#demos
-			h1 Examples
-			.demo
-				.title
-					a(href="/lod/gnis/feature/1654975") Lake Tahoe
-				.info Under the 'Incoming Triples' section, we can see that this is the <code>nhd:gnisFeature</code> of <a href="/lod/nhd/feature/44560536">an NHD feature</a>, which has a <a href="/lod/geometry/multipolygon/nhdf.44560536">multipolygon geometry node</a>. 
+block content-block
+  body
+    .content-layout
+      .left-col 
+      .content
+        .page-content
+          .intro
+            h1 The official Linked Data version of the USGS GNIS dataset
+            p From <a href="https://geonames.usgs.gov/domestic/index.html" target="_blank">the Board on Geographic Names</a>:
+            p.quote The Geographic Names Information System (GNIS) is the Federal and national standard for geographic nomenclature. The U.S. Geological Survey developed the GNIS in support of the U.S. Board on Geographic Names as the official repository of domestic geographic names data, the official vehicle for geographic names use by all departments of the Federal Government, and the source for applying geographic names to Federal electronic and printed products. <br><br> The GNIS contains information about physical and cultural geographic features of all types in the United States, associated areas, and Antarctica, current and historical, but not including roads and highways. The database holds the Federally recognized name of each feature and defines the feature location by state, county, USGS topographic map, and geographic coordinates. Other attributes include names or spellings other than the official name, feature designations, feature classification, historical and descriptive information, and for some categories the geometric boundaries.
+            p The GNIS-LD service exposes the GNIS information in a linked data format, conforming to the W3C <a href="https://www.w3.org/TR/rdf11-concepts/" target="_blank">RDF</a> standard. This enables intelligent querying around US federally recognized places. The backing graph store supports the GeoSPARQL standard enabling powerful geospatial reasoning over the dataset.
+            p The project is currently funded by KnowWhereGraph, NSF <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2033521" target="_blank">#2033521</a> and was originally completed by the <a href="https://www.geog.ucsb.edu/services/research-facilities" target="_blank">STKO Lab</a> at University of California Santa Barbara. For more information about the project, team, and publications visit the <a href="/about">About</a> page.
 
-		#sources
-			h1 Source code
-			.list
-				.item
-					.title 
-						a(href="https://github.com/blake-regalia/usgs-ld") USGS-LD
-					.info Bundles the entire pipeline into a Docker Compose file and a helper bash script. Its components are listed out below.
-				.item
-					.title 
-						a(href="https://github.com/blake-regalia/usgs-triplifier") USGS Triplifier
-					.info Converts GNIS and other USGS datasets (such as NHD) into RDF.
-				.item
-					.title
-						a(href="https://github.com/blake-regalia/kiwi-bulk-loader") KiWi Bulk Loader
-					.info Loads triples directly into KiWi's PostgreSQL tables in parallel.
-				.item
-					.title
-						a(href="https://github.com/blake-regalia/marmotta/tree/usgs-ld") Apache Marmotta
-					.info The 584 branch of Apache Marmotta supports GeoSPARQL.
-				.item
-					.title
-						a(href="https://github.com/blake-regalia/gnis-ld.org") GNIS-LD.org
-					.info This website which includes dereferencing logic, redirection, and SPARQL query proxying.
+          .queries
+            h1 Data 
+            p The GNIS-LD dataset is available to the public free of charge. The data can be obtained by querying the SPARQL endpoint or by downloading a database archive. The data is hosted in a GraphDB repository using the RDFS-Plus inference ruleset.
 
+            h2 SPARQL Endpoint
+            p A public SPARQL endpoint is available at the <a href="/sparql" target="_blank">sparql</a> page. Queries have a time limit of one hour but are not limited by the number of results returned.
+            p An example query using cURL,
+            p.quote curl -d 'query=SELECT * WHERE {?s ?p ?o}' https://gnis-ld.org/sparql
+            p A user friendly way to test queries is located on the <a href="/queries">queries</a> page. It provides a number of example queries and an easy to use SPARQL tool.
+            
+            h2 Database Archive
+            p If a complete archive of the database is needed, it can be downloaded at the <a href="/data" target="_blank">data</a> endpoint page. The database is composed of approximately 35 million triples; the exported file is approximately 2.5 GB. 
+            
+            h2 Structure
+            p The data is described with a number of common ontologies-most of which are W3C standards. Two ontologies were developed for this project, <a href="/images/gnis.svg" target='_blank'>gnis</a> and <a href="/images/usgs.svg" target='_blank'>usgs</a>. Both ontologies are used to describe the data. The usgs ontology contains terms about features. For example, it contains definitions for streams, plains, ridges, etc. The gnis ontology creates terms for talking about counties and extends properties of generic features.
+            p The OWL files defining the two ontologies can be downloaded from the cards below.
+            
+            .card-container
+              .cards 
+                .card
+                  a(href='/resource/ontologies/usgs.ttl' target='_blank')
+                    .usgs
+                      .title-banner 
+                        .title Download USGS
+                .card
+                  a(href='/resource/ontologies/gnis.ttl' target='_blank')
+                    .gnis
+                      .title-banner 
+                        .title Download GNIS
 
-
-
-		#contact
-			| blake at geog.ucsb.edu
