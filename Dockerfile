@@ -1,5 +1,5 @@
 # Dockerfile for GNIS-LD frontend
-FROM node:alpine
+FROM node:17-alpine3.13
 MAINTAINER DataONE <support@dataone.org>
 
 # web server
