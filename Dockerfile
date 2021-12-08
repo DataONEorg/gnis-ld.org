@@ -1,5 +1,5 @@
 # Dockerfile for GNIS-LD frontend
-FROM node:alpine
+FROM node:17-alpine3.13
 MAINTAINER DataONE <support@dataone.org>
 
 # web server
@@ -12,6 +12,8 @@ COPY . .
 # install packages
 RUN apk update && \
     apk upgrade
+
+RUN apk --no-cache add make python3 gcc postgresql-dev g++
 
 # install software
 RUN npm i -g gulp
