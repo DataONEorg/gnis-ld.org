@@ -1,14 +1,14 @@
 const S_DATA_PATH = process.env.USGS_DATA_PATH || '/lod';
 // The graph store's SPARQL endpoint
 const P_ENDPOINT = process.env.USGS_ENDPOINT_URL || `http://localhost:7200/repositories/gnis-ld`;
-const DEPLOYMENT_ADDRESS = process.env.BASE || 'gnis-ld.org';
+const DEPLOYMENT_HOST = process.env.BASE || 'gnis-ld.org';
 
-const P_DATA_URI = `http://${DEPLOYMENT_ADDRESS}${S_DATA_PATH}`;
+const P_DATA_URI = `http://${DEPLOYMENT_HOST}${S_DATA_PATH}`;
 const P_GEOM_URI = `${P_DATA_URI}/geometry`;
 
 
 module.exports = {
-	data_host: DEPLOYMENT_ADDRESS,
+	data_host: DEPLOYMENT_HOST,
 	data_path: S_DATA_PATH,
 	data_uri: P_DATA_URI,
 	geom_uri: P_GEOM_URI,
