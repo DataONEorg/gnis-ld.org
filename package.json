@@ -48,7 +48,7 @@
     "font-awesome": "^4.7.0",
     "http-proxy-middleware": "^2.0.1",
     "jquery-browserify": "^1.8.1",
-    "jsonld": "^1.0.1",
+    "jsonld": "^8.1.0",
     "mkdirp": "^1.0.4",
     "pg": "^8.0.0",
     "socket.io": "^2.0.3",
