@@ -1,20 +1,28 @@
 # gnis-ld.org
 
-Frontend for https://gnis-ld.org
+- **Author**: Blake Regalia, Thomas Thelen
+- **License**: [Apache 2](http://opensource.org/licenses/Apache-2.0)
+- [Package source code on Github](https://github.com/DataONEorg/gnis-ld.org)
+- [**Submit Bugs and feature requests**](https://github.com/DataONEorg/gnis-ld.org/issues)
+- Contact us: support@dataone.org
+
+This repository contains the webapp that acts as the front to [GNIS-LD](https://gnis-ld.org/).
 
 ## Building
 
 To build the source, run `gulp` from the project root.
 
+The docker images below should match the ones used in the [kubernetes deployment](https://github.com/DataONEorg/gnis-deployment).
+
 When building a development docker image, run
 
-`docker build -t thomasthelen/gnis-ld:dev .`
+`docker build -t gnislinkeddata/gnis-ld:dev .`
 
 When building a production docker image, run
 
-`docker build -t thomasthelen/gnis-ld .`
+`docker build -t gnislinkeddata/gnis-ld .`
 
-Finally, push the image to `thomasthelen/gnis-ld:<dev/latest>`
+Finally, push the image to `gnislinkeddata/gnis-ld:<dev/latest>`
 
 ### Differentiating Between Production & Development
 
@@ -94,3 +102,7 @@ One potentially confusing part of the build/content serving system is that _not 
 ## Acknowledgments
 Work on this package was supported by:
   - NSF OIA grant [2033521](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2033521) to Krzysztof Janowicz
+
+[![DataONE_footer](https://user-images.githubusercontent.com/6643222/162324180-b5cf0f5f-ae7a-4ca6-87c3-9733a2590634.png)](https://dataone.org)
+
+[![nceas_footer](https://www.nceas.ucsb.edu/sites/default/files/2020-03/NCEAS-full%20logo-4C.png)](https://www.nceas.ucsb.edu)
