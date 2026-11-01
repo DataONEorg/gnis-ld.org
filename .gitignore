@@ -10,3 +10,5 @@ data
 .git-*
 !plugins/package.json
 
+archives/*
+!archives/.gitkeep

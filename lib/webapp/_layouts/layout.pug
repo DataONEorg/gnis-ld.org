@@ -1,19 +1,39 @@
 include ../_mixins/_header
-include ../_mixins/_navigation
 include ../_mixins/_footer
 
 doctype html
 html(lang='en')
   head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='GNIS-LD is the official Linked Data version of the USGS Geographic Names Information System. It has stable identifiers, a live SPARQL endpoint, and bulk downloads for every federally recognized place name in the United States.')
+    meta(property='og:title', content='GNIS-LD')
+    meta(property='og:description', content='Resolve place names to stable USGS identifiers and query authoritative geographic data as Linked Data.')
+    meta(property='og:type', content='website')
     title GNIS-LD
-    block content-header
+    link(rel='icon', type='image/svg+xml', href='/images/favicon.svg')
+    link(rel='icon', type='image/png', sizes='32x32', href='/images/favicon-32.png')
+    link(rel='icon', type='image/png', sizes='16x16', href='/images/favicon-16.png')
+    link(rel='apple-touch-icon', sizes='180x180', href='/images/apple-touch-icon.png')
     link(rel='stylesheet', type='text/css', href='/style/common.css')
+    block content-header
   body
     +header()
-    .content-layout
-      .left-col 
-      .content
-        +navigation()
-        block content-block
-          .page-content
+    main.site-main
+      block content-block
     +footer()
+    script.
+      (function() {
+        // mark the nav link matching the current page
+        var path = location.pathname;
+        var links = document.querySelectorAll('.site-nav a');
+        Array.prototype.forEach.call(links, function(a) {
+          var href = a.getAttribute('href').split('#')[0];
+          if (href === path || (href !== '/' && path.indexOf(href) === 0)) {
+            a.classList.add('active');
+            a.setAttribute('aria-current', 'page');
+            var group = a.closest('.nav-group');
+            if (group) group.querySelector('.nav-group-trigger').classList.add('active');
+          }
+        });
+      })();

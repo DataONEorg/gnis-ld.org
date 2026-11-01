@@ -1,0 +1,42 @@
+extends layout.pug
+
+block content-header
+  link(rel='stylesheet', type='text/css', href='/style/downloads.css')
+
+block content-block
+  .page-content
+    h1 Downloads
+    p Each GNIS-LD release is archived and available for download. A release file contains the triples the ETL generated for that release, including the two ontologies. Triples that the live endpoint infers at query time are not included. The current release is served live at the SPARQL endpoint.
+
+    h2 Release cadence
+    p Each GNIS-LD release is built from the USGS GNIS domestic names data, which USGS updates #[strong quarterly]. Each quarter the GNIS data is downloaded and processed with the #[a(href='https://github.com/DataONEorg/usgs-triplifier' target='_blank') triplifier pipeline], loaded into the live SPARQL endpoint, and archived here. Identifiers are kept the same between updates. Releases are also recorded in the dataset's #[a(href='/docs#metadata') VoID/DCAT metadata], so the archives can be machine-discoverable.
+    p USGS occasionally removes features from its products. The records of those features are published in the optional #[em historical] companion file of each release. The historical features have the #[code usgs:HistoricalFeature] class along with the #[code gnis:lastAppearedIn] property, which points to the release that last contained them. These features are still served by GNIS-LD for systems that require backwards compatibility.
+
+    h2 Release archive
+    if releases && releases.length
+      table.release-table
+        thead
+          tr
+            th Release
+            th Published
+            th Triples
+            th Size
+            th
+        tbody
+          each release, i in releases
+            tr(class=i === 0 ? 'current' : undefined)
+              td
+                | #{release.id}
+                if i === 0
+                  span.current-chip Current
+              td #{release.published}
+              td #{release.triples}
+              td #{release.size}
+              td.dl-cell
+                a.dl-btn(href=release.url target='_blank') Download
+                if release.historical
+                  a.dl-historical(href=release.historical.url target='_blank') + historical (#{release.historical.size})
+    else
+      p No archived releases yet.
+
+    p.archive-note Archives are gzip-compressed N-Triples (#[code .nt.gz]). For loading instructions, see #[a(href='/docs#using') using GNIS-LD]. For how releases link together, see #[a(href='/docs#lineage') querying across lineage].
